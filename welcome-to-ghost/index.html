@@ -15,8 +15,9 @@
     <link rel="shortcut icon" href="../favicon.ico">
 
     
-    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css@v=2bbf8c4d58" />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic%7COpen+Sans:700,400" />
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.4/styles/monokai_sublime.min.css"> 
 
     
     <meta name="generator" content="Ghost 0.4" />
@@ -98,9 +99,25 @@
 
 <p>Got a streak of geek? We've got you covered there, too. You can write inline <code>&lt;code&gt;</code> blocks really easily with back ticks. Want to show off something more comprehensive? 4 spaces of indentation gets you there.</p>
 
-<pre><code>.awesome-thing {
-    display: block;
-    width: 100%;
+<pre><code>public class MineSweeper
+{ private int[][] myTruth;
+  private boolean[][] myShow;
+  
+  public void cellPicked(int row, int col)
+  { if( inBounds(row, col) && !myShow[row][col] )
+    { myShow[row][col] = true;
+    
+      if( myTruth[row][col] == 0)
+      { for(int r = -1; r <= 1; r++)
+          for(int c = -1; c <= 1; c++)
+            cellPicked(row + r, col + c);
+      } 
+    }
+  }
+  
+  public boolean inBounds(int row, int col)
+  { return 0 <= row && row < myTruth.length && 0 <= col && col < myTruth[0].length;
+  }
 }
 </code></pre>
 
@@ -164,11 +181,13 @@
     </footer>
 
     
-    <script src="../public/jquery.js@v=9ca15cd93f"></script>
+    <script src="../public/jquery.js@v=2bbf8c4d58"></script>
 
     
-    <script type="text/javascript" src="../assets/js/jquery.fitvids.js@v=9ca15cd93f"></script>
-    <script type="text/javascript" src="../assets/js/index.js@v=9ca15cd93f"></script>
-
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js@v=2bbf8c4d58"></script>
+    <script type="text/javascript" src="../assets/js/index.js@v=2bbf8c4d58"></script>
+    <script src="http://yandex.st/highlightjs/7.4/highlight.min.js"></script>  
+    <script>hljs.initHighlightingOnLoad();</script>  
+    
 </body>
 </html>
